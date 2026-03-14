@@ -15,7 +15,7 @@ export function composeReviewPrompt(files: DiffReviewFile[], payload: ReviewSubm
   const fileMap = new Map(files.map((file) => [file.id, file]));
   const lines: string[] = [];
 
-  lines.push("Please address the following feedback");
+  lines.push("Address the following code review feedback:");
   lines.push("");
 
   const overallComment = payload.overallComment.trim();
