@@ -187,8 +187,6 @@ export default function (pi: ExtensionAPI) {
       if (prompt.length > 0) {
         ctx.ui.setEditorText(prompt);
         ctx.ui.notify("Inserted diff review feedback into the editor.", "info");
-      } else {
-        ctx.ui.notify("No feedback to insert.", "info");
       }
     } catch (error) {
       waitingUI.dismiss();
