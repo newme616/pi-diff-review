@@ -56,7 +56,17 @@ export interface ReviewRequestFilePayload {
   scope: ReviewScope;
 }
 
-export type ReviewWindowMessage = ReviewSubmitPayload | ReviewCancelPayload | ReviewRequestFilePayload;
+export interface ReviewRequestPastePayload {
+  type: "request-paste";
+  requestId: string;
+}
+
+export interface ReviewCopyTextPayload {
+  type: "copy-text";
+  text: string;
+}
+
+export type ReviewWindowMessage = ReviewSubmitPayload | ReviewCancelPayload | ReviewRequestFilePayload | ReviewRequestPastePayload | ReviewCopyTextPayload;
 
 export interface ReviewFileDataMessage {
   type: "file-data";
@@ -75,7 +85,19 @@ export interface ReviewFileErrorMessage {
   message: string;
 }
 
-export type ReviewHostMessage = ReviewFileDataMessage | ReviewFileErrorMessage;
+export interface ReviewPasteDataMessage {
+  type: "paste-data";
+  requestId: string;
+  text: string;
+}
+
+export interface ReviewPasteErrorMessage {
+  type: "paste-error";
+  requestId: string;
+  message: string;
+}
+
+export type ReviewHostMessage = ReviewFileDataMessage | ReviewFileErrorMessage | ReviewPasteDataMessage | ReviewPasteErrorMessage;
 
 export interface ReviewWindowData {
   repoRoot: string;
